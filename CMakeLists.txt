@@ -61,7 +61,6 @@ SET (LEPT_LIB lept)
 #find_package(leptonica REQUIRED)
 
 
-
 if(WIN32)
     add_definitions( -DWIN32 -DMINGW32 -c -O2 -frtti -fexceptions -mthreads -enable-stdcall-fixup -Wl,-enable-auto-import -Wl,-enable-runtime-pseudo-reloc)
     # SET (LEPT_INC "c:/usr/projects/BuildFolder/include/leptonica")
@@ -78,6 +77,7 @@ else(WIN32)
     if(lept_DIR)
         SET (LEPT_INC "${lept_DIR}/include/leptonica")
         SET (LEPT_LIB_DIR "${lept_DIR}/lib")
+        SET (LEPT_LIB "${lept_DIR}/lib/liblept.a")
     else(lept_DIR)
         SET (LEPT_INC "/usr/include/leptonica")
         SET (LEPT_LIB_DIR "/usr/lib/")
