@@ -2,3 +2,6 @@
 .svn
 .deps
 .libs
+Makefile
+/config
+Makefile.in

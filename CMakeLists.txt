@@ -51,7 +51,7 @@ INCLUDE(CPack)
 
 # ADD_CUSTOM_TARGET(uninstall
     # "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
- 
+
 SET (LEPT_INC /usr/local/include/leptonica/)
 SET (LEPT_LIB lept)
 #http://www.vtk.org/Wiki/CMake:How_To_Find_Libraries
@@ -75,8 +75,13 @@ if(WIN32)
     #SET (LEPT_LIB liblept-static-mtdll.lib)
     #add_definitions( -DMINGW32)
 else(WIN32)
-    SET (LEPT_INC "/usr/include/leptonica")
-    SET (LEPT_LIB_DIR "/usr/lib/")
+    if(NOT lept_DIR)
+        SET (LEPT_INC "${lept_DIR}/include/leptonica")
+        SET (LEPT_LIB_DIR "${lept_DIR}")
+    else(NOT lept_DIR)
+        SET (LEPT_INC "/usr/include/leptonica")
+        SET (LEPT_LIB_DIR "/usr/lib/")
+    endif(NOT lept_DIR)
     #SET (LIBS ${LIBS} -L"vs2008/lib/")
     #SET (LEPT_LIB lept168)
 endif(WIN32)
